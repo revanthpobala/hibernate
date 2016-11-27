@@ -20,9 +20,10 @@ public class HibernateTest {
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
 		
-		UserDetails users = (UserDetails) session.get(UserDetails.class,6);
-		session.delete(users);
-
+		UserDetails users = (UserDetails) session.get(UserDetails.class,5);
+		users.setUsername("Rebuuuuuuu");
+		session.update(users);
+		
 
 		session.getTransaction().commit();
 		session.close();
