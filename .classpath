@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hibernate"/>
+	<classpathentry kind="lib" path="/home/revanth/Desktop/slf4j.jar.zip"/>
+	<classpathentry kind="lib" path="/home/revanth/Desktop/org.slf4j.log4j12-1.6.4.jar.zip"/>
+	<classpathentry kind="lib" path="/home/revanth/Desktop/slf4j-jdk14-1.7.5.jar"/>
+	<classpathentry kind="lib" path="/home/revanth/Desktop/mysql-connector-java-5.1.21.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
