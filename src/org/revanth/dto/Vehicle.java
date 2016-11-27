@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 @Entity
 public class Vehicle {
 	
@@ -19,8 +22,9 @@ public class Vehicle {
 	private int VehicleId;
 	private String VehicleName;
 
-	@ManyToMany(mappedBy="vehicle")
-	private Collection<UserDetails> userlist  = new ArrayList<UserDetails>();
+	@ManyToOne
+	@NotFound(action=NotFoundAction.IGNORE)
+	private UserDetails user;
 	
 	public String getVehicleName() {
 		return VehicleName;
@@ -28,11 +32,11 @@ public class Vehicle {
 	public void setVehicleName(String vehicleName) {
 		VehicleName = vehicleName;
 	}
-	public Collection<UserDetails> getUserlist() {
-		return userlist;
+	public UserDetails getUser() {
+		return user;
 	}
-	public void setUserlist(Collection<UserDetails> userlist) {
-		this.userlist = userlist;
+	public void setUser(UserDetails user) {
+		this.user = user;
 	}
 
 }
