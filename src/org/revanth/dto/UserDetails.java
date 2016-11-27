@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -41,7 +42,10 @@ public class UserDetails {
 	// For one to many or many to one. you need to specify the class in the
 	// other class like we did with vehicle class. Once the vehicle class is
 	// defined, we need to create getter and setter methods. 
-	@OneToMany(mappedBy="user")
+
+
+	@ManyToMany
+	@JoinColumn(name="vehicle_id")
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
 	public int getUserID() {

@@ -1,10 +1,14 @@
 package org.revanth.dto;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,9 +18,9 @@ public class Vehicle {
 	@GeneratedValue
 	private int VehicleId;
 	private String VehicleName;
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private UserDetails user;
+
+	@ManyToMany(mappedBy="vehicle")
+	private Collection<UserDetails> userlist  = new ArrayList<UserDetails>();
 	
 	public String getVehicleName() {
 		return VehicleName;
@@ -24,11 +28,11 @@ public class Vehicle {
 	public void setVehicleName(String vehicleName) {
 		VehicleName = vehicleName;
 	}
-	public UserDetails getUser() {
-		return user;
+	public Collection<UserDetails> getUserlist() {
+		return userlist;
 	}
-	public void setUser(UserDetails user) {
-		this.user = user;
+	public void setUserlist(Collection<UserDetails> userlist) {
+		this.userlist = userlist;
 	}
 
 }
