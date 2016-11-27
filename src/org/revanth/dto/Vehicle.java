@@ -1,38 +1,32 @@
 package org.revanth.dto;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
-import javax.annotation.Generated;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(
+		name="Vehicle_type",
+		discriminatorType= DiscriminatorType.STRING
+		)
 public class Vehicle {
-	
+
 	@Id
 	@GeneratedValue
 	private int VehicleId;
 	private String VehicleName;
 
-//	@ManyToMany(mappedBy="vehicle")
-//	private Collection<UserDetails> userlist  = new ArrayList<UserDetails>();
-	
 	public String getVehicleName() {
 		return VehicleName;
 	}
+
 	public void setVehicleName(String vehicleName) {
 		VehicleName = vehicleName;
 	}
-//	public Collection<UserDetails> getUserlist() {
-//		return userlist;
-//	}
-//	public void setUserlist(Collection<UserDetails> userlist) {
-//		this.userlist = userlist;
-//	}
 
 }
