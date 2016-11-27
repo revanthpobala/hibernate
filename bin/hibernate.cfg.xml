@@ -52,6 +52,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="org.revanth.dto.UserDetails"/>
+        <mapping class="org.revanth.dto.Vehicle"/>
 
     </session-factory>
 
