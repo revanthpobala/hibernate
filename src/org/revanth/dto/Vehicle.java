@@ -4,20 +4,18 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(
-		name="Vehicle_type",
-		discriminatorType= DiscriminatorType.STRING
-		)
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+
 public class Vehicle {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int VehicleId;
 	private String VehicleName;
 
@@ -27,6 +25,14 @@ public class Vehicle {
 
 	public void setVehicleName(String vehicleName) {
 		VehicleName = vehicleName;
+	}
+
+	public int getVehicleId() {
+		return VehicleId;
+	}
+
+	public void setVehicleId(int vehicleId) {
+		VehicleId = vehicleId;
 	}
 
 }

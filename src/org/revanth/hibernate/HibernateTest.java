@@ -31,10 +31,10 @@ public class HibernateTest {
 		SessionFactory sessionfactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
-		
+		session.save(vehicle);
 		session.save(car);
 		session.save(bike);
-		session.save(vehicle);
+		
 		session.getTransaction().commit();
 		session.close();
 	}
