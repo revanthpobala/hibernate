@@ -18,14 +18,22 @@ public class HibernateTest {
 		
 		Vehicle vehicle = new Vehicle();
 		vehicle.setVehicleName("Car");
+		vehicle.setUser(users);
 		
-		users.setVehicle(vehicle);
+		Vehicle vehicle2 = new Vehicle();
+		vehicle2.setVehicleName("Jeep");
+		
+		//THis is used for bidirectional relationship. Many to one
+		vehicle2.setUser(users);
+		
+		users.getVehicle().add(vehicle2);
 		
 		SessionFactory sessionfactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
 		session.save(users);
 		session.save(vehicle);
+		session.save(vehicle2);
 		session.getTransaction().commit();
 		session.close();
 	}

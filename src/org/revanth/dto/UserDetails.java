@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,10 +37,13 @@ public class UserDetails {
 	@Column(name = "User_ID")
 	private int userID;
 	private String username;
-	
-	@OneToOne
-	@JoinColumn(name="Vehicle_Id")
-	private Vehicle vehicle;
+
+	// For one to many or many to one. you need to specify the class in the
+	// other class like we did with vehicle class. Once the vehicle class is
+	// defined, we need to create getter and setter methods. 
+	@OneToMany
+	@JoinTable(name = "user_vehicle", joinColumns = @JoinColumn(name = "User_id"), inverseJoinColumns = @JoinColumn(name = "Vehicle_id"))
+	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
 	public int getUserID() {
 		return userID;
@@ -57,11 +61,11 @@ public class UserDetails {
 		this.username = username;
 	}
 
-	public Vehicle getVehicle() {
+	public Collection<Vehicle> getVehicle() {
 		return vehicle;
 	}
 
-	public void setVehicle(Vehicle vehicle) {
+	public void setVehicle(Collection<Vehicle> vehicle) {
 		this.vehicle = vehicle;
 	}
 
