@@ -4,6 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -14,6 +15,7 @@ public class Vehicle {
 	private int VehicleId;
 	private String VehicleName;
 	@ManyToOne
+	@JoinColumn(name="user_id")
 	private UserDetails user;
 	
 	public String getVehicleName() {

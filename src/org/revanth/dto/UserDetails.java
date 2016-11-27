@@ -41,8 +41,7 @@ public class UserDetails {
 	// For one to many or many to one. you need to specify the class in the
 	// other class like we did with vehicle class. Once the vehicle class is
 	// defined, we need to create getter and setter methods. 
-	@OneToMany
-	@JoinTable(name = "user_vehicle", joinColumns = @JoinColumn(name = "User_id"), inverseJoinColumns = @JoinColumn(name = "Vehicle_id"))
+	@OneToMany(mappedBy="user")
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
 	public int getUserID() {

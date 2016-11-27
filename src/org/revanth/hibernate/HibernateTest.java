@@ -26,7 +26,6 @@ public class HibernateTest {
 		//THis is used for bidirectional relationship. Many to one
 		vehicle2.setUser(users);
 		
-		users.getVehicle().add(vehicle2);
 		
 		SessionFactory sessionfactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactory.openSession();
