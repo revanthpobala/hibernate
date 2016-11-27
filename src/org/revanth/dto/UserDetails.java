@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
@@ -44,8 +45,7 @@ public class UserDetails {
 	// defined, we need to create getter and setter methods. 
 
 
-	@ManyToMany
-	@JoinColumn(name="vehicle_id")
+	@OneToMany(cascade=CascadeType.PERSIST)
 	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
 	public int getUserID() {
