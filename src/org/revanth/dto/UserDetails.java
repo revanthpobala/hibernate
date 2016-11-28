@@ -29,10 +29,12 @@ import javax.persistence.Transient;
 
 import org.hibernate.annotations.CollectionId;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NamedQuery;
 import org.hibernate.annotations.Type;
 
 @Entity
-//@org.hibernate.annotations.Entity(selectBeforeUpdate=true)
+@org.hibernate.annotations.Entity(selectBeforeUpdate=true)
+@NamedQuery(name="UserDetails.byId", query="from UserDetails where User_ID = ?")
 @Table(name = "User_Details")
 public class UserDetails {
 	@Id

@@ -23,7 +23,8 @@ public class HibernateTest {
 
 		// Not the table name. You should mention the Object Name after whre
 		// clause you need to give the Column name for ex column name = User_ID
-		Query query = session.createQuery("from UserDetails where User_ID>5");
+		Query query = session.getNamedQuery("UserDetails.byId");
+		query.setInteger(0,2);
 
 		List<UserDetails> users = (List<UserDetails>) query.list();
 		System.out.println(users.size());
