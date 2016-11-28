@@ -34,7 +34,7 @@ import org.hibernate.annotations.Type;
 
 @Entity
 @org.hibernate.annotations.Entity(selectBeforeUpdate=true)
-@NamedQuery(name="UserDetails.byId", query="from UserDetails where User_ID = ?")
+//@NamedQuery(name="UserDetails.byId", query="from UserDetails where User_ID = ?")
 @Table(name = "User_Details")
 public class UserDetails {
 	@Id
