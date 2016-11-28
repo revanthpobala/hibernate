@@ -32,6 +32,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 @Entity
+//@org.hibernate.annotations.Entity(selectBeforeUpdate=true)
 @Table(name = "User_Details")
 public class UserDetails {
 	@Id
@@ -39,14 +40,6 @@ public class UserDetails {
 	@Column(name = "User_ID")
 	private int userID;
 	private String username;
-
-	// For one to many or many to one. you need to specify the class in the
-	// other class like we did with vehicle class. Once the vehicle class is
-	// defined, we need to create getter and setter methods. 
-
-
-	@OneToMany(cascade=CascadeType.PERSIST)
-	private Collection<Vehicle> vehicle = new ArrayList<Vehicle>();
 
 	public int getUserID() {
 		return userID;
@@ -62,14 +55,6 @@ public class UserDetails {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public Collection<Vehicle> getVehicle() {
-		return vehicle;
-	}
-
-	public void setVehicle(Collection<Vehicle> vehicle) {
-		this.vehicle = vehicle;
 	}
 
 }

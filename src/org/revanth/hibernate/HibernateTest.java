@@ -1,7 +1,9 @@
 package org.revanth.hibernate;
 
 import java.util.Date;
+import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,18 +17,24 @@ public class HibernateTest {
 
 	public static void main(String[] args) {
 
-		
 		SessionFactory sessionfactory = new Configuration().configure().buildSessionFactory();
 		Session session = sessionfactory.openSession();
 		session.beginTransaction();
-		
-		UserDetails users = (UserDetails) session.get(UserDetails.class,5);
-		users.setUsername("Rebuuuuuuu");
-		session.update(users);
-		
+
+		// Not the table name. You should mention the Object Name after whre
+		// clause you need to give the Column name for ex column name = User_ID
+		Query query = session.createQuery("from UserDetails where User_ID>5");
+
+		List<UserDetails> users = (List<UserDetails>) query.list();
+		System.out.println(users.size());
 
 		session.getTransaction().commit();
 		session.close();
+		
+		for(UserDetails u: users){
+			System.out.println(u.getUsername());
+		}
+
 	}
 
 }
